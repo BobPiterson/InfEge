@@ -155,3 +155,4 @@ cython_debug/
 *.txt
 *.docx
 *.xlsx
+*.pdf
