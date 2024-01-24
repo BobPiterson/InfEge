@@ -10,19 +10,32 @@
 # Повтори 3 [Вперёд 12 Направо 120]. Точки на линии учитывать не следует.
 #
 import turtle
+# поднять кисть
 turtle.penup()
+# ускорить выполнение
 turtle.delay(0)
-
-for x in range(15):
-    for y in range(15):
-        turtle.goto(x * 20, y * 20)
+# задать коэффициент масштабирования и смещение. Смещение необходимо, т.к. начало координат находится в середине окна.
+# необходимо подобрать такие параметры, чтобы рисунок вошел в окно, но при этом был максимально большим для удобства подсчета.
+coefficient = 60
+offset = 350
+# нарисовать сетку
+for x in range(13):
+    for y in range(13):
+        turtle.goto(x * coefficient - offset, y * coefficient - offset)
         turtle.dot(3)
-turtle.goto(0, 0)
+# вернуться в начало рисунка и развернуть исполнителя для движения вверх
+turtle.goto(0 - offset, 0 - offset)
+turtle.left(90)
+# включить рисование
 turtle.pendown()
+# рисуем по заданной в условии программе
 for i in range(0, 4):
-    turtle.forward(12 * 20)
+    turtle.forward(12 * coefficient)
     turtle.right(90)
 for i in range(0, 3):
-    turtle.forward(12 * 20)
+    turtle.forward(12 * coefficient)
     turtle.right(120)
-turtle.delay(1000)
+# не закрывать окно, пока не сделал по нему клик мышкой
+turtle.exitonclick()
+
+# Ответ: 65 точек
