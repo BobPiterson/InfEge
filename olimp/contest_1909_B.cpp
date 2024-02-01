@@ -1,7 +1,6 @@
 // https://codeforces.com/contest/1909/problem/B
 
 #include <iostream>
-#include <vector>
 #include <set>
 
 using namespace std;
