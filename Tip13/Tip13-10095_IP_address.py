@@ -51,6 +51,9 @@ def conjunction(ip, mask):
 
 
 s_2 = conjunction('192.168.10.18', '255.255.255.240')
-print('IP address network:', s_2[:-1], ' = ', ip2_to_ip10(s_2))
+print('IP address network:', s_2, ' = ', ip2_to_ip10(s_2))
 
+# Альтернативный вариант побитового умножения
+# s_2 = str(192 & 255) + '.' + str(168 & 255) + '.' + str(10 & 255) + '.' + str(18 & 240)
+# print('IP address network:', s_2)
 
