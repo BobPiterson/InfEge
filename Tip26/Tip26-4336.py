@@ -1,39 +1,47 @@
 # https://kompege.ru/variant
-f = open('D:/Users/bobpi/Downloads/26_4336.txt').readlines()
+# Известны ежесекундные данные о входе и выходе посетителей банка в течение суток (86400 секунд)
+# Определите, сколько было промежутков времени, когда в банке не было ни одного посетителя
+# а также суммарную продолжительность простоя банка
+
+f = open('C:/Users/vngorlachev/Documents/VisualStudioCode/Projects/txt/26_4336.txt').readlines()
+# удаляем первый элемент
 f.pop(0)
 m = []
 for i in range(0, len(f)):
     m.append([int(f[i].split()[0]), int(f[i].split()[1])])
+# обязательно сортируем по времени прихода
 m.sort()
-#print(m[0], m[1], '...', m[len(m) - 1])
 
+# создаем два списка: время входа и время выхода i-того посетителя
 start = []
 stop = []
 for i in m:
     start.append(i[0])
     stop.append(i[1])
-#print('start = ', start)
-#print('stop = ', stop)
 
-pos = []
-start_stop = []
+# подсчет посетителей в каждую секунду (всего 86400 секунд)
+count_user = 0  # количество одномоментно присутствующих в банке посетителей
+sum_time = 0    # сумма промежутков времени, когда банк пуст
+out_time = 0    # время покидания банка последним посетителем
+count_free_time = 0 # подсчет количества периодов простоя банка
 for i in range(86400):
     if i % 1000 == 0: print(i // 1000)
+    # в любую секунду может прийти или уйти одновременно несколько посетителей
+    # поэтому подсчитываем количество вошедших посетителей для каждой секунды start.count(i)
     for k in range(start.count(i)):
-        pos.append(i)
-        if len(pos) == 1:
-            start_stop.append(i)
-
+        count_user += 1
+        # Если в пустой банк вошел первый посетитель,
+        # но до этого все выходили из банка (out_time != 0), сохраним время этого события и добавим время простоя банка
+        if count_user == 1 and out_time != 0:
+            in_time = i
+            sum_time = sum_time + (in_time - out_time)
+    # подсчитываем количество покинувших банк посетителей для каждой секунды stop.count(i)
     for k in range(stop.count(i)):
-        pos.pop(0)
-        if len(pos) == 0:
-            start_stop.append(i)
-start_stop.pop(0)
-#print(len(start_stop))
-#print(start_stop)
-summa = 0
-i = 0
-while i < len(start_stop) - 2:
-    summa = summa + (start_stop[i + 1] - start_stop[i])
-    i += 2
-print(len(start_stop) // 2, summa)
+        count_user -= 1
+        # Если последний посетитель вышел и в банке осталось 0 человек,
+        # сохраним время этого события и добавим количество периодов простоев банка
+        if count_user == 0:
+            out_time = i
+            count_free_time += 1
+# При выводе результата учитываем, что последний посетитель в конце приема нам не нужен, поэтому вычитаем 1
+print(count_free_time - 1, sum_time)
