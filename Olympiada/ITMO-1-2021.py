@@ -1,5 +1,8 @@
 # https://olymp.itmo.ru/files/2023-01/bda5/4b3e/6911832a-9c03-7ff520b01746.pdf
 
+alp = "0123456789ABCDEF"
+
+
 # функция сложения больших чисел десятичных дробей одинаковой длины
 def summa_in_string(s1, s2):
     if len(s1) != len(s2):
@@ -19,26 +22,23 @@ def summa_in_string(s1, s2):
         summa = str(integ) + summa
     return summa
 
+
 # Функция для преобразования дробной части десятичной дроби в систему счисления q
-def change_10_to_Q(number,q):
+def change_10_to_Q(number: str, q: int) -> str:
     number = number[2:]
-    s = ''
     len_s = len(number)
+    s = ''
     i = 0
-    while int(number) != 0:
-        s1 = str(int(number) * q // (10 ** (len_s)))
-        number = str(int(number) * q - (int(s1) * 10 ** (len_s)))
-        if s1 == '10': s1 = 'A'
-        if s1 == '11': s1 = 'B'
-        if s1 == '12': s1 = 'C'
-        if s1 == '13': s1 = 'D'
-        if s1 == '14': s1 = 'E'
-        if s1 == '15': s1 = 'F'
-        s = s + s1
+    while int(number):
+        s1 = str(int(number) * q // (10 ** len_s))
+        number = str(int(number) * q - (int(s1) * 10 ** len_s))
+        s += alp[int(s1)]
         i += 1
         # запасной выход, если дробная часть бесконечной длины
-        if i == 500: return '0.' + s
+        if i == 500:
+            break
     return '0.' + s
+
 
 # def change_10_to_Q_int(number,q):
 #     s = ''
@@ -66,9 +66,9 @@ def change_10_to_Q(number,q):
 #         summa = summa + int(number[i],q) / q**(i + 1)
 #     return summa
 
-slag1 = format(8**13 / (int('1000',16) ** 13), '.117f') # заранее определена длина дробной части - 117 значащих цифр
-slag2 = format(4**7 / (int('100',16) ** 7), '.117f')
-slag3 = format(2**2 / (int('10',16) ** 2), '.117f')
+slag1 = format(8 ** 13 / (int('1000', 16) ** 13), '.117f')  # заранее определена длина дробной части - 117 значащих цифр
+slag2 = format(4 ** 7 / (int('100', 16) ** 7), '.117f')
+slag3 = format(2 ** 2 / (int('10', 16) ** 2), '.117f')
 res = summa_in_string(slag1, slag2)
 res2 = summa_in_string(res, slag3)
 print('Результат суммы в десятичной системе:', res2)
