@@ -14,7 +14,7 @@ pair<int, int> pref[MAXN];
 signed main() {
     cin.tie(nullptr);
     ios_base::sync_with_stdio(false);
-    freopen("/Users/matvei/Developer/Projects/SPP/info/tests/27B_5680.txt", "r", stdin);
+    freopen("D:/Users/bobpi/Downloads/27B_5680.txt", "r", stdin);
 
     int n, m, l;
     cin >> n >> m >> l;
