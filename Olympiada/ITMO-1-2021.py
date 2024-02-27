@@ -1,8 +1,6 @@
 # https://olymp.itmo.ru/files/2023-01/bda5/4b3e/6911832a-9c03-7ff520b01746.pdf
-
-alp = "0123456789ABCDEF"
-
-
+# теория по переводу:
+# https://www.yaklass.ru/p/informatika/10-klass/teoreticheskie-osnovy-informatiki-7279404/perevod-drobnoi-chasti-chisla-iz-odnoi-sistemy-schisleniia-v-druguiu-6593586
 # функция сложения больших чисел десятичных дробей одинаковой длины
 def summa_in_string(s1, s2):
     if len(s1) != len(s2):
@@ -22,41 +20,28 @@ def summa_in_string(s1, s2):
         summa = str(integ) + summa
     return summa
 
-
 # Функция для преобразования дробной части десятичной дроби в систему счисления q
 def change_10_to_Q(number: str, q: int) -> str:
-    number = number[2:]
-    len_s = len(number)
+    alp = "0123456789ABCDEF"
+    # Сохраним круглое число, соответствующее по количеству разрядов с исходным числом
+    # сперва из длины исходного числа вычтем два символа: '0.'
+    len_s = 10 ** (len(number) - 2) # длина дробной части постоянна
+    number = int(number[2:])
     s = ''
     i = 0
-    while int(number):
-        s1 = str(int(number) * q // (10 ** len_s))
-        number = str(int(number) * q - (int(s1) * 10 ** len_s))
-        s += alp[int(s1)]
+    # Цикл, пока дробная часть (представленная в целом виде) не равна 0
+    while number:
+        # Умножаем дробную часть на показатель системы счисления
+        # и сохраняем целую часть в s1
+        s1 = number * q // len_s
+        # сохраняем дробную часть в целом виде
+        number = number * q - s1 * len_s
+        s += alp[s1]
         i += 1
         # запасной выход, если дробная часть бесконечной длины
         if i == 500:
             break
     return '0.' + s
-
-
-# def change_10_to_Q_int(number,q):
-#     s = ''
-#     i = 0
-#     while number % 1 != 0:
-#         drob = number % 1 * q
-#         s1 = str(int(drob - drob % 1))
-#         if drob - drob % 1 == 10: s1 = 'A'
-#         if drob - drob % 1 == 11: s1 = 'B'
-#         if drob - drob % 1 == 12: s1 = 'C'
-#         if drob - drob % 1 == 13: s1 = 'D'
-#         if drob - drob % 1 == 14: s1 = 'E'
-#         if drob - drob % 1 == 15: s1 = 'F'
-#         s = s + s1
-#         number = (number % 1) * q
-#         i += 1
-#         if i == 500: return '0.' + s
-#     return '0.' + s
 
 # def change_Q_to_10(number, q):
 #     number = number[2:]
