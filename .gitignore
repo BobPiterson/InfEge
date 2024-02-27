@@ -157,6 +157,8 @@ cython_debug/
 *.xlsx
 *.pdf
 *.ini
+*.exe
+*.json
 tmp.py
 
 # more
