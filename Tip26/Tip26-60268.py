@@ -2,14 +2,16 @@
 import sys
 sys.setrecursionlimit(14000)
 
-f = open("C:/Users/vngorlachev/Documents/VisualStudioCode/Projects/txt/26_2024.txt").readlines()
+f = open("C:/Users/vngorlachev/Documents/VisualStudioCode/Projects/txt/26_2024_tmp.txt").readlines()
 #print(f[0])
-m = []
-for i in range(1, len(f)):
-    m.append([int(f[i].split()[0]), int(f[i].split()[1])])
+# m = []
+# for i in range(1, len(f)):
+#     m.append([int(f[i].split()[0]), int(f[i].split()[1])])
+m = [list(map(int, s.split())) for s in f]
+m.pop(0)
 #print(m[0])
 m.sort()
-#print(m)
+print(m)
 #print(m[0][0], m[0][1])
 start = []
 stop = []
@@ -33,7 +35,7 @@ def rek(d, k):
             #print(select)
             if len(select) >= max_merop:
                 max_merop = len(select)
-                #select2.append(list(select))
+                select2.append(list(select))
                 #print(select)
             rek(k, d)
         rek(d, k + 1)
@@ -41,17 +43,17 @@ def rek(d, k):
         select.pop()
         return(k)
 
-for d in range(len(m)):
-    print(d)
-    select.append([start[d], stop[d]])
-    rek(d, d)
+for q in range(len(m)):
+    #print(q)
+    select.append([start[q], stop[q]])
+    rek(q, q)
 
 
-# for i in range(len(select2)):
-#     for j in range(len(select2[i])-1):
-#         if len(select2[i]) == max_merop and select2[i][j + 1][0] - select2[i][j][1] > max_perer:
-#             max_perer = select2[i][j + 1][0] - select2[i][j][1]
-#             print(select2[i])
+for i in range(len(select2)):
+    for j in range(len(select2[i])-1):
+        if len(select2[i]) == max_merop and select2[i][j + 1][0] - select2[i][j][1] > max_perer:
+            max_perer = select2[i][j + 1][0] - select2[i][j][1]
+            #print(select2[i])
 
 
 print(max_merop, max_perer)
