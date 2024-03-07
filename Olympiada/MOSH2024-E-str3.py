@@ -1,15 +1,59 @@
 import time
 f = open("D:/Users/bobpi/Downloads/e2.txt").read().split()
 n = f[0]
-# Вторая строка из файла
-text = f[3]
-fano = f[4]
+# Третья строка из файла
+text = f[5]
+fano = f[6]
 #print(text)
 print(len(text), len(fano))
 abc = 'abcdefghij'
 
 # statistics
 # ------------------------------------------------------------------------------------------------------
+# подсчет повторений каждого символа, в том числе подсчет количества повторений символов, стоящих подряд (до 10 подряд)
+# stat = []
+# includ = set()
+# for c in text:
+#     for i in range(1, 10):
+#         if not (c * i in includ):
+#             if text.count(c * i) != 0:
+#                 stat.append([c * i, text.count(c * i)])
+#                 includ.add(c * i)
+# stat.sort()
+# print(stat)
+
+# подсчет повторений самых частых пар символов (ищем от 17 до 30 повторений)
+# stat = []
+# includ = set()
+# for c in text:
+#     for a1 in abc:
+#         for a2 in abc:
+#             for i in range(17, 30):
+#                 tmp = a1 + a2
+#                 if not (tmp in includ):
+#                     if text.count(tmp) == i:
+#                         stat.append([tmp, text.count(tmp)])
+#                         includ.add(tmp)
+#                         print(tmp, '=', text.count(tmp))
+
+# stat.sort()
+# print(stat)
+
+# Подсчет количества повторяющихся ПОДРЯД кодов для повторяющихся подряд символов (repeat_char - количество повторов)
+repeat_char = 2
+for i in range(2 ** 19):
+    subs = bin(i)[2:]
+    subs = subs[::-1]
+    if fano.count(subs * repeat_char) >= 17:
+        print('cc? =', subs * repeat_char, fano.count(subs * repeat_char))
+
+# Подсчет количества повторения кодов (из разных символов) во всем списке кодов фано
+# for i in range(2 ** 19):
+#     subs = bin(i)[2:]
+#     subs = subs[::-1]
+#     if fano.count(subs) >= 17:
+#         print('cc? =', subs, fano.count(subs))
+
 # подсчет повторений самых длинных подстрок в тексте
 # maxlen_2 = 0
 # maxlen_3 = 0
@@ -42,55 +86,6 @@ abc = 'abcdefghij'
 #             maxstring3 = sub
 # print('2 повтора', maxstring2)
 # print('3 повтора', maxstring3)
-
-
-# подсчет повторений каждого символа, в том числе подсчет количества повторений символов, стоящих подряд
-# stat = []
-# includ = set()
-# for c in text:
-#     for i in range(1, 10):
-#         if not (c * i in includ):
-#             if text.count(c * i) != 0:
-#                 stat.append([c * i, text.count(c * i)])
-#                 includ.add(c * i)
-# stat.sort()
-# print(stat)
-
-# подсчет повторений самых частых пар символов (ищем от 17 до 30 повторений)
-stat = []
-includ = set()
-for c in text:
-    for a1 in abc:
-        for a2 in abc:
-            for i in range(17, 30):
-                tmp = a1 + a2
-                if not (tmp in includ):
-                    if text.count(tmp) == i:
-                        stat.append([tmp, text.count(tmp)])
-                        includ.add(tmp)
-                        print(tmp, '=', text.count(tmp))
-
-
-
-# stat.sort()
-# print(stat)
-
-# Подсчет количества повторяющихся ПОДРЯД кодов для повторяющихся подряд символов (repeat_char - количество повторов)
-# repeat_char = 3
-# for i in range(2 ** 19):
-#     subs = bin(i)[2:]
-#     subs = subs[::-1]
-#     if fano.count(subs * repeat_char) >= 2:
-#         print('e, j =', subs * repeat_char, fano.count(subs * repeat_char))
-
-# Подсчет количества повторения кодов (из разных символов) во всем списке кодов фано
-# for i in range(2 ** 19):
-#     subs = bin(i)[2:]
-#     subs = subs[::-1]
-#     if fano.count(subs) >= 16:
-#         print('cb? =', subs, fano.count(subs))
-
-
 
 # ----------------------------------------------------------------------------------------------------------------------
 # найденные соответствия
