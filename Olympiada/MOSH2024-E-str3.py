@@ -1,9 +1,9 @@
 import time
 f = open("D:/Users/bobpi/Downloads/e2.txt").read().split()
 n = f[0]
-# Третья строка из файла
-text = f[5]
-fano = f[6]
+# Четвертая пара строк из файла
+text = f[7]
+fano = f[8]
 #print(text)
 print(len(text), len(fano))
 abc = 'abcdefghij'
@@ -41,16 +41,16 @@ abc = 'abcdefghij'
 
 # Подсчет количества повторяющихся ПОДРЯД кодов для повторяющихся подряд символов (repeat_char - количество повторов)
 # repeat_char = 3
-# exponent = 6
+# exponent = 18
 # for e in range(1, exponent):
 #     for i in range(2 ** e):
 #         #if i % 1000000 == 0: print(i)
 #         subs = f"{i:0{e}b}"
 #         if fano.count(subs * repeat_char) >= 2:
-#             print('eee or jjj? =', subs * repeat_char, fano.count(subs * repeat_char))
+#             print('eee or jjj? =', (subs + ' ') * repeat_char, fano.count(subs * repeat_char))
 
 # Подсчет количества повторения кодов (из разных символов) во всем списке кодов фано
-# exponent = 6
+# exponent = 20
 # for e in range(1, exponent):        
 #     for i in range(2 ** e):
 #         subs = f"{i:0{e}b}"
@@ -95,8 +95,8 @@ abc = 'abcdefghij'
 # diction1 = [['a', '0011010000'], ['b', '1010111110'], ['c', '0100111100'], ['d', '1000010101'], ['e', '1000110010'], \
 #            ['f', '0010101001'], ['g', '1111111010'], ['h', '0001111110'], ['i', '0001010100'], ['j', '1010100101']]
 
-diction2 = [['a', '1000'], ['b', '0100'], ['c', '1100'], ['d', '0010'], ['e', '1010'], \
-           ['f', '0110'], ['g', '1110'], ['h', '0001'], ['i', '1001'], ['j', '0101']]
+diction2 = [['a', '0000000001'], ['b', '0000000010'], ['c', '0000000011'], ['d', '0000000100'], ['e', '0000000101'], \
+           ['f', '0000000110'], ['g', '0000000111'], ['h', '0000001000'], ['i', '0000001001'], ['j', '0000001010']]
 
 
 # Замена кода фано на найденные соответствия и сохранение в список text2
