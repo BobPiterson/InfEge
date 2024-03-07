@@ -40,19 +40,22 @@ abc = 'abcdefghij'
 # print(stat)
 
 # Подсчет количества повторяющихся ПОДРЯД кодов для повторяющихся подряд символов (repeat_char - количество повторов)
-repeat_char = 2
-for i in range(2 ** 19):
-    subs = bin(i)[2:]
-    subs = subs[::-1]
-    if fano.count(subs * repeat_char) >= 17:
-        print('cc? =', subs * repeat_char, fano.count(subs * repeat_char))
+# repeat_char = 3
+# exponent = 6
+# for e in range(1, exponent):
+#     for i in range(2 ** e):
+#         #if i % 1000000 == 0: print(i)
+#         subs = f"{i:0{e}b}"
+#         if fano.count(subs * repeat_char) >= 2:
+#             print('eee or jjj? =', subs * repeat_char, fano.count(subs * repeat_char))
 
 # Подсчет количества повторения кодов (из разных символов) во всем списке кодов фано
-# for i in range(2 ** 19):
-#     subs = bin(i)[2:]
-#     subs = subs[::-1]
-#     if fano.count(subs) >= 17:
-#         print('cc? =', subs, fano.count(subs))
+# exponent = 6
+# for e in range(1, exponent):        
+#     for i in range(2 ** e):
+#         subs = f"{i:0{e}b}"
+#         if fano.count(subs) >= 17:
+#             print('cc? =', subs, fano.count(subs))
 
 # подсчет повторений самых длинных подстрок в тексте
 # maxlen_2 = 0
@@ -92,24 +95,24 @@ for i in range(2 ** 19):
 # diction1 = [['a', '0011010000'], ['b', '1010111110'], ['c', '0100111100'], ['d', '1000010101'], ['e', '1000110010'], \
 #            ['f', '0010101001'], ['g', '1111111010'], ['h', '0001111110'], ['i', '0001010100'], ['j', '1010100101']]
 
-diction2 = [['a', '1'], ['b', '01'], ['c', '001'], ['d', '0001'], ['e', '00001'], \
-           ['f', '000001'], ['g', '0000001'], ['h', '00000001'], ['i', '000000001'], ['j', '0000000001']]
+diction2 = [['a', '1000'], ['b', '0100'], ['c', '1100'], ['d', '0010'], ['e', '1010'], \
+           ['f', '0110'], ['g', '1110'], ['h', '0001'], ['i', '1001'], ['j', '0101']]
 
 
 # Замена кода фано на найденные соответствия и сохранение в список text2
-# subs = ''
-# text2 = ''
-# for s in fano:
-#     subs = subs + s
-#     for i in range(len(diction2)):
-#         if diction2[i][1] == subs:
-#             text2 = text2 + diction2[i][0]
-#             subs = ''
-#             break
-# # print()
-# # print(text2)
-# print()
-# if text2 == text:
-#     print('Все элементы совпадают, таблица найдена: ', diction2)
-# else:
-#     print('Полного соответствия нет')
+subs = ''
+text2 = ''
+for s in fano:
+    subs = subs + s
+    for i in range(len(diction2)):
+        if diction2[i][1] == subs:
+            text2 = text2 + diction2[i][0]
+            subs = ''
+            break
+print()
+print(text2)
+print()
+if text2 == text:
+    print('Все элементы совпадают, таблица найдена: ', diction2)
+else:
+    print('Полного соответствия нет')
