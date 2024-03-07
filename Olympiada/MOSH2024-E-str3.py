@@ -1,9 +1,9 @@
 import time
 f = open("D:/Users/bobpi/Downloads/e2.txt").read().split()
 n = f[0]
-# Четвертая пара строк из файла
-text = f[7]
-fano = f[8]
+# Седьмая пара строк из файла
+text = f[13]
+fano = f[14]
 #print(text)
 print(len(text), len(fano))
 abc = 'abcdefghij'
@@ -28,15 +28,13 @@ abc = 'abcdefghij'
 # for c in text:
 #     for a1 in abc:
 #         for a2 in abc:
-#             for i in range(17, 30):
+#             for i in range(14, 30):
 #                 tmp = a1 + a2
 #                 if not (tmp in includ):
 #                     if text.count(tmp) == i:
 #                         stat.append([tmp, text.count(tmp)])
 #                         includ.add(tmp)
 #                         print(tmp, '=', text.count(tmp))
-
-# stat.sort()
 # print(stat)
 
 # Подсчет количества повторяющихся ПОДРЯД кодов для повторяющихся подряд символов (repeat_char - количество повторов)
@@ -46,16 +44,16 @@ abc = 'abcdefghij'
 #     for i in range(2 ** e):
 #         #if i % 1000000 == 0: print(i)
 #         subs = f"{i:0{e}b}"
-#         if fano.count(subs * repeat_char) >= 2:
-#             print('eee or jjj? =', (subs + ' ') * repeat_char, fano.count(subs * repeat_char))
+#         if fano.count(subs * repeat_char) >= 3:
+#             print('eee? =', (subs + ' ') * repeat_char, fano.count(subs * repeat_char))
 
 # Подсчет количества повторения кодов (из разных символов) во всем списке кодов фано
 # exponent = 20
 # for e in range(1, exponent):        
 #     for i in range(2 ** e):
 #         subs = f"{i:0{e}b}"
-#         if fano.count(subs) >= 17:
-#             print('cc? =', subs, fano.count(subs))
+#         if fano.count(subs) >= 14:
+#             print('jg? =', subs, fano.count(subs))
 
 # подсчет повторений самых длинных подстрок в тексте
 # maxlen_2 = 0
@@ -92,11 +90,8 @@ abc = 'abcdefghij'
 
 # ----------------------------------------------------------------------------------------------------------------------
 # найденные соответствия
-# diction1 = [['a', '0011010000'], ['b', '1010111110'], ['c', '0100111100'], ['d', '1000010101'], ['e', '1000110010'], \
-#            ['f', '0010101001'], ['g', '1111111010'], ['h', '0001111110'], ['i', '0001010100'], ['j', '1010100101']]
-
-diction2 = [['a', '0000000001'], ['b', '0000000010'], ['c', '0000000011'], ['d', '0000000100'], ['e', '0000000101'], \
-           ['f', '0000000110'], ['g', '0000000111'], ['h', '0000001000'], ['i', '0000001001'], ['j', '0000001010']]
+diction2 = [['a', '.'], ['b', '.'], ['c', '.'], ['d', '00101100001'], ['e', '100'], \
+           ['f', '1111'], ['g', '1101'], ['h', '0011100'], ['i', '110011'], ['j', '10110111']]
 
 
 # Замена кода фано на найденные соответствия и сохранение в список text2
