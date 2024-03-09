@@ -6,7 +6,7 @@ alp = digits + ascii_lowercase
 def translate_int(num, base):
     s = ''
     while num:
-        s += str(alp[num % base])
+        s += alp[num % base]
         num //= base
     return s[::-1] if s else '0'
 
@@ -14,7 +14,7 @@ def translate_int(num, base):
 def translate_float(num, div, base, length=10000):
     s = ''
     while num and len(s) < length:
-        s += str(alp[num * base // div])
+        s += alp[num * base // div]
         num = num * base % div
     return s if s else '0'
 
