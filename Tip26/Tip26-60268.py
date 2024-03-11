@@ -2,7 +2,7 @@
 import sys
 sys.setrecursionlimit(14000)
 
-f = open("C:/Users/vngorlachev/Documents/VisualStudioCode/Projects/txt/26_2024_tmp.txt").readlines()
+f = open("D:/Users/bobpi/Downloads/26_2024.txt").readlines()
 #print(f[0])
 # m = []
 # for i in range(1, len(f)):
