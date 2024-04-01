@@ -165,3 +165,4 @@ tmp.py
 .DS_STORE
 cmake-build-debug
 input.txt
+inputs
