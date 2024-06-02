@@ -1,4 +1,4 @@
-with open('zadanie24_1.txt', 'r') as file:
+with open('24.txt', 'r') as file:
     line = file.readline()
 
 ans = 0
