@@ -151,13 +151,14 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# txt, docx, xlsx
+# txt, docx, xlsx, csv
 *.docx
 *.xlsx
 *.pdf
 *.ini
 *.exe
 *.json
+*.csv
 tmp.py
 
 # more
@@ -165,3 +166,4 @@ tmp.py
 .DS_STORE
 cmake-build-debug
 input.txt
+inputs
