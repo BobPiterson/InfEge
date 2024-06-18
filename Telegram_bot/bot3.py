@@ -1,4 +1,9 @@
+###################################################################
+# Мой первый Бот
+###################################################################
+# для работы с файлами .ini
 import configparser
+import datetime
 import asyncio
 import logging
 from aiogram import Router, Bot, Dispatcher, F
@@ -17,21 +22,7 @@ token = config.get("default", "Token")
 user_id = config.get("default", "Id")
 scheduler = AsyncIOScheduler(timezone='Europe/Moscow')
 
-# функция - задание
-# async def prompt(bot: Bot):
-#     await bot.send_message(user_id, text="text")
-#     print("Executing Task...")
-
-
 async def main():
-
-
-    # Создает фоновый планировщик по умолчанию
-    #scheduler = AsyncIOScheduler()
-    # планирование задания
-    #scheduler.add_job(prompt, 'interval', seconds=10)
-    # Запуск запланированных заданий
-    #scheduler.start()
 
     # Инициализируем бота
     bot = Bot(token=token)
@@ -40,8 +31,19 @@ async def main():
 
     start_router = Router()
 
-    # CommandStart и Command – это встроенные фильтры.
-    # CommandStart срабатывает на команду /start
+    async def auto_posting():
+        # отправляем сообщение по указанному user_id
+        now = datetime.datetime.now()
+        text = now.strftime("%H:%M:%S")
+        await bot.send_message(user_id, text = text, parse_mode = 'HTML')
+
+    # Создает фоновый планировщик по умолчанию
+    scheduler = AsyncIOScheduler()
+    # планирование задания
+    scheduler.add_job(auto_posting, 'interval', seconds=60)
+    # Запуск запланированных заданий
+    scheduler.start()
+
     @start_router.message(CommandStart())
     async def cmd_start(message: Message):
         # параметр message отправляет сообщение в ответ тому пользователю, от которого пришла команда
@@ -52,7 +54,6 @@ async def main():
     @start_router.message(Command('stop'))
     async def cmd_stop(message: Message):
         await message.answer('Запуск сообщения по команде /stop используя фильтр Command()')
-        #await bot.stop_poll('@bob_message_bot')
 
     @start_router.message(F.text == '/start_3')
     async def cmd_start_3(message: Message):
