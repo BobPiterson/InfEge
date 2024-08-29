@@ -31,6 +31,7 @@ async def main():
     await bot.send_message(user_id, text = 'Bot started...', parse_mode = 'HTML')
     await bot.send_message(user_id, text = '------------------------------------------------------------------------------', parse_mode = 'HTML')
 
+    # Функция, вызываемая планировщиком задач
     async def auto_posting():
         now = datetime.datetime.now()
         text = now.strftime("%H:%M:%S")
@@ -39,7 +40,7 @@ async def main():
     # Создает фоновый планировщик по умолчанию
     scheduler = AsyncIOScheduler()
     # планирование задания с заданным интервалом
-    scheduler.add_job(auto_posting, 'interval', seconds=5)
+    scheduler.add_job(auto_posting, 'interval', seconds = 60)
     # Запуск запланированных заданий
     scheduler.start()
 
