@@ -17,7 +17,7 @@ max = 360
 left(36)
 for i in range(max):
     forward(100 * 3)
-    left(five_star)
+    left(triangle)
     #print(i, '    ', XY[0], XY[1], pos()[0], pos()[1])
     if XY[0] == round(pos()[0]) and XY[1] == round(pos()[1]):
         #print('--- Выход по совпадению координат ---')
