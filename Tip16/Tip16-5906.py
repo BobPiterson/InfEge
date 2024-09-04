@@ -1,6 +1,6 @@
 # https://kompege.ru/variant
 import sys
-sys.setrecursionlimit(14000)
+sys.setrecursionlimit(2049)
 def f(x, y):
     if x == 0:
         return y + 1
