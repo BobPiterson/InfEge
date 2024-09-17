@@ -15,3 +15,4 @@ for i in range(len(f) - 1):
 for i in range (len(n)- 161):
     m = max(m, n[i + 161] - n[i]) # 161 получается так как надо учесть две буквы: CD
 
+print (m)
