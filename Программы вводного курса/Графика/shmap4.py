@@ -2,9 +2,13 @@
 # Cпрайт игрока и управление
 import pygame
 import random
+from os import path # для определения пути к файлу в любой операционной системе
+# в переменную сохраняется правильный путь к папке относительно файла с кодом игры
+img_dir = path.join(path.dirname(__file__), 'img') # в кавычках указывается папка с картинками
+print(img_dir)
 # размеры игрового окна
-WIDTH = 480
-HEIGHT = 600
+WIDTH = 800
+HEIGHT = 480
 FPS = 60
 
 # Задаем цвета
@@ -22,12 +26,22 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Игра!")
 clock = pygame.time.Clock() # отчет частоты кадров
 
+# Загрузка всей игровой графики
+background = pygame.image.load(path.join(img_dir, 'starfield2.png')).convert()
+background_rect = background.get_rect()
+player_img = pygame.image.load(path.join(img_dir, "H-09.png")).convert()
+meteor_img = pygame.image.load(path.join(img_dir, "rotationY1.png")).convert()
+bullet_img = pygame.image.load(path.join(img_dir, "laser19.png")).convert()
+
 # Описание класса игрока (управляемый с клавиатуры спрайт)
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((50, 40))   # размер спрайта
-        self.image.fill(GREEN)                  # цвет спрайта
+        self.image = player_img 
+        self.image = pygame.transform.scale(player_img, (50, 38)) # уменьшаем размер картинки до заданного
+        self.image.set_colorkey(BLACK) # убрать черный прямоугольник вокруг спрайта 
+        # self.image = pygame.Surface((50, 90))   # размер спрайта 
+        #self.image.fill(GREEN)                  # цвет спрайта
         self.rect = self.image.get_rect() # изменение размера спрайта до размера картинки спрайта (если в виде спрайта загружена картинка)
         self.rect.centerx = WIDTH / 2   # определение координаты начального расположения спрайта: середина спрайта по середине окна
         self.rect.bottom = HEIGHT - 10  # определение координаты начального расположения спрайта: нижняя граница спрайта на 10 пикселей выше нижней точки окна
@@ -57,8 +71,12 @@ class Player(pygame.sprite.Sprite):
 class Mob(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((30, 40))
-        self.image.fill(RED)
+        self.image = meteor_img 
+        self.image = pygame.transform.scale(meteor_img, (50, 50)) # уменьшаем размер картинки до заданного
+        self.image.set_colorkey(BLACK) # убрать черный прямоугольник вокруг спрайта 
+
+        #self.image = pygame.Surface((30, 40))
+        #self.image.fill(RED)
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(WIDTH - self.rect.width) # задаем начальную координату левого верхнего угла по Х от 0 до ширины окна-ширина спрайта
         self.rect.y = random.randrange(-1000, -40)  # задаем начальную координату левого верхнего угла по Y от -100 до -40 (т.е. спрайт рождается за пределами окна)
@@ -81,8 +99,13 @@ class Mob(pygame.sprite.Sprite):
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y): # где x, y - координаты спрайта игрока
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((10, 20))
-        self.image.fill(YELLOW)
+        self.image = bullet_img 
+        self.image = pygame.transform.scale(bullet_img, (5, 50)) # уменьшаем размер картинки до заданного
+        self.image.set_colorkey(BLACK) # убрать черный прямоугольник вокруг спрайта 
+
+
+        #self.image = pygame.Surface((10, 20))
+        #self.image.fill(YELLOW)
         self.rect = self.image.get_rect()
         self.rect.bottom = y
         self.rect.centerx = x
@@ -158,6 +181,7 @@ while running: # пока не закончилась игра
 
     # Рендеринг (отрисовка)
     screen.fill(BLACK)
+    screen.blit(background, background_rect) # прорисовка фона - файл starfield2.png
     all_sprites.draw(screen)
     # После отрисовки буфера, переворачиваем экран
     pygame.display.flip()
