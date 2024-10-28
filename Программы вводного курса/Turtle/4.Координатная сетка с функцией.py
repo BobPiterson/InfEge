@@ -1,6 +1,7 @@
 import turtle
 from math import sin, pi, factorial
 turtle.delay(0)
+#turtle.speed(12)
 turtle.dot(8)
 # подписываем начало координат - "0"
 turtle.penup()
@@ -77,18 +78,17 @@ for x in range(- os_x // 2, os_x // 2 + 1):
         #turtle.dot(3)
 
 # рисуем функцию y = sin(x) через ряд Тейлора
-t = 4 * pi / os_x # масштаб периода функции по оси х (растянутый на длину оси х)    t = 0.00837
-h = 300 # масштаб значения функции по оси у
-m = 7 # количество членов ряда
-turtle.pencolor('green')
-turtle.penup() # поднимаем кисть, если надо рисовать точками. Если рисуем отрезками, кисть не поднимаем.
-for x in range(- os_x // 2, os_x // 2 + 1):
-    summa = 0
-    for i in range(1, m + 1):
-        summa += ((-1) ** (i - 1) * (x * t) ** (2 * i - 1) / factorial(2 * i - 1))
-    turtle.goto(x, int(summa * h))
-    turtle.dot(3)
-
+# t = 4 * pi / os_x # масштаб периода функции по оси х (растянутый на длину оси х)    t = 0.00837
+# h = 300 # масштаб значения функции по оси у
+# m = 7 # количество членов ряда
+# turtle.pencolor('green')
+# turtle.penup() # поднимаем кисть, если надо рисовать точками. Если рисуем отрезками, кисть не поднимаем.
+# for x in range(- os_x // 2, os_x // 2 + 1):
+#     summa = 0
+#     for i in range(1, m + 1):
+#         summa += ((-1) ** (i - 1) * (x * t) ** (2 * i - 1) / factorial(2 * i - 1))
+#     turtle.goto(x, int(summa * h))
+#     turtle.dot(3)
 
 
 turtle.exitonclick()

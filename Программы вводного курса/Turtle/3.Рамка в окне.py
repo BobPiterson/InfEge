@@ -20,13 +20,4 @@ for i in range(2):
     turtle.forward(os_x)
     turtle.right(90)
 
-# turtle.forward(os_y)
-# turtle.right(90)
-# turtle.forward(os_x)
-# turtle.right(90)
-# turtle.forward(os_y)
-# turtle.right(90)
-# turtle.forward(os_x)
-# turtle.right(90)
-
 turtle.exitonclick()
