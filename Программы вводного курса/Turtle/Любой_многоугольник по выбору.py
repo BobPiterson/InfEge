@@ -1,13 +1,9 @@
 from turtle import *
+delay(0) # рисовать без задержки
+width(2) # ширина пера
+pencolor('red') # цвет пера
 
-delay(0)
-# ширина пера
-width(2)
-# цвет пера и цвет закраски
-pencolor('red')
-
-running = True
-while running: # пока не закончилась
+while True: # Повторять бесконечно
     print('Выберите номер фигуры: \n \
         1. Треугольник\n \
         2. Квадрат\n \
@@ -18,11 +14,13 @@ while running: # пока не закончилась
         7. Пятиконечная звезда\n \
         8. Звезда № 1\n \
         9. Звезда № 2\n \
-        10. Звезда № 3\n \
-        11. Выход \n')
+        0. Выход \n')
     choice = int(input())
+    reset()
+    width(2) # ширина пера
+    pencolor('red') # цвет пера и цвет закраски
     penup()
-    goto(-100, -100)
+    goto(-100, -200)
     pendown()
 
     if choice == 1:
@@ -44,9 +42,9 @@ while running: # пока не закончилась
     elif choice == 5:
         corner = 360 / 7
         repeat = 7
-        length = 250
+        length = 200
     elif choice == 6:
-        corner = 360 // 8
+        corner = 360 / 8
         repeat = 8
         length = 200
     elif choice == 7:
@@ -61,15 +59,9 @@ while running: # пока не закончилась
         corner = 170
         repeat = 36
         length = 300
-    elif choice == 10:
-        corner = 175
-        repeat = 72
-        length = 300
     else:
-        running = False
-
+        exit()
 
     for i in range(repeat):
         forward(length)
         left(corner)
-exitonclick()
