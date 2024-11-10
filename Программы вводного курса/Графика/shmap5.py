@@ -1,4 +1,4 @@
-# Игра Shmup - 1 часть
+  # Игра Shmup - 1 часть
 # Cпрайт игрока и управление
 import pygame
 import random
