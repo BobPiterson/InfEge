@@ -24,7 +24,10 @@ def convert_to(number, base):
     return result
 
 # Исходное число в десятиричной системе:
-a = 9999
+a = 1570137287
+print('Исходное число: ', a)
 # с применением универсальной функции, переведем в 20-ричную систему и обратно:
-print(convert_to(a, 20))
-print(int(convert_to(a, 20), 20))
+print('Получено: ', convert_to(a, 36))
+print('Проверка: ', int(convert_to(a, 36), 36))
+# print(convert_to7(a))
+# print(int(convert_to7(a), 7))
