@@ -15,13 +15,13 @@ while len(s) < 4:
     s.add(n1)
     n.append(n1)
     if len(s) < len(n):
-        n.remove[n1]
+        n.remove(n1)
 
-print(n)
+#print(n)
 count = 0 # Счетчик попыток
+print('Для завершения игры введите 0')
 
 while True:
-    print('Для завершения игры введите 0')
     x = input('Введите четырехзначное число для проверки. Цифры не должны повторяться: ')
     if x == '0':
         print('Игра окончена!')
@@ -42,6 +42,6 @@ while True:
         print('ПОЗДРАВЛЯМ! Было загадано число ', str(n[0])+str(n[1])+str(n[2])+str(n[3]), ' Вы отгадали его с ', count, 'попыток!')
         exit()
     cows = cows - bulls
-    print('Коров: ', cows, 'Быков: ', bulls)
+    print('Коров: ', cows, '|   Быков: ', bulls)
         
 
