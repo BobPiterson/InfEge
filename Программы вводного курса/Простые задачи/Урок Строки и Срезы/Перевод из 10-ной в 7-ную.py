@@ -6,7 +6,7 @@ while a > 0:
     ostatok = a % 7
     a = a // 7
     result = result + str(ostatok)
-
+# перевернуть строку задом на перед
 result = result[::-1]
 print('В 7-ной системе получилось: ', result)
 print('Обратное преобразование: ', int(result, 7))
