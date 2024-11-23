@@ -1,5 +1,12 @@
-# Игра Shmup - 1 часть
-# Cпрайт игрока и управление
+# Игра Shmup - 3 часть
+# Добавлено:
+# 1) заменяем все спрайты на картинки из заранее заготовленных файлов
+# 2) добавляем в спрайт игрока Метод для выстрела игрока
+# 3) добавляем описание спрайта - выстрела
+# 4) проверяем коллизии - пересечение спрайта метеорита и игрока, а также пересечение выстрела и метеорита
+#
+#
+#
 import pygame
 import random
 from os import path # для определения пути к файлу в любой операционной системе
@@ -24,7 +31,7 @@ pygame.init()
 pygame.mixer.init() # инициализация звука
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Игра!")
-clock = pygame.time.Clock() # отчет частоты кадров
+clock = pygame.time.Clock() # отсчет частоты кадров
 
 # Загрузка всей игровой графики
 background = pygame.image.load(path.join(img_dir, 'starfield2.png')).convert()
@@ -103,7 +110,6 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(bullet_img, (5, 50)) # уменьшаем размер картинки до заданного
         self.image.set_colorkey(BLACK) # убрать черный прямоугольник вокруг спрайта 
 
-
         #self.image = pygame.Surface((10, 20))
         #self.image.fill(YELLOW)
         self.rect = self.image.get_rect()
@@ -116,9 +122,6 @@ class Bullet(pygame.sprite.Sprite):
         if self.rect.bottom < 0:
             self.kill()
 
-
-
-
 # создаем новый набор для всех спрайтов
 all_sprites = pygame.sprite.Group()
 # создаем экземпляр класса Player
@@ -129,18 +132,13 @@ all_sprites.add(player)
 # создаем новый набор спрайтов для врагов:
 mobs = pygame.sprite.Group()
 # создаем экземпляры классов Враги:
-for i in range(4):
+for i in range(10):
     m = Mob()           # создаем в переменной m экземпляр класса
     all_sprites.add(m)  # добавляем экземпляр в общий набор всех спрайтов
     mobs.add(m)         # добавляем экземпляр в набор для врагов
 
 # создаем новый набор спрайтов для пуль:
 bullets = pygame.sprite.Group()
-
-
-
-
-
 
 
 # Цикл игры
@@ -164,7 +162,7 @@ while running: # пока не закончилась игра
 
     # Обновление спрайтов - вызывает для каждого спрайта из общего набора спрайтов метод update
     all_sprites.update()
-    # Проверка, не ударил ли моб игрока
+    # Проверка, не ударил ли моб игрока, заканчиваем игру при попадании по игроку
     hits = pygame.sprite.spritecollide(player, mobs, False)
     if hits:
         running = False
