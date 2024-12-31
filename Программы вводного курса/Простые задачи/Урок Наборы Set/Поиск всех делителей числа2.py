@@ -12,5 +12,3 @@ for i in range(1, int(n ** (1/2)) + 1):
         multipliers.add(n // i)
 print(sorted(multipliers))
 print('Найдено делителей: ', len(multipliers))
-
-
