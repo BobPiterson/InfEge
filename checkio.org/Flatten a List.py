@@ -1,28 +1,32 @@
-def goes_after(word: str, first: str, second: str) -> bool:
-    print('----', first, second)
-    print(word.find(first))
-    if word.find(first) >= 0 and len(word) > word.find(first) + 1:
-        print(word[word.find(first) + 1])
-        if word.find(first) + 1 == word.find(second):
-            return True
-    
-    return False
+# Taken from mission Flatten a List
+
+from collections.abc import Iterable
+def flat_list(array: list[int]) -> Iterable[int]:
+    for a in array:
+        if isinstance(a, list):
+            for b in flat_list(a):
+                yield b
+        else:
+            yield a
 
 
 print("Example:")
-print(goes_after("world", "w", "o"))
+print(list(flat_list([1, [1]])))
 
 # These "asserts" are used for self-checking
-assert goes_after("world", "w", "o") == True
-assert goes_after("world", "w", "r") == False
-assert goes_after("world", "l", "o") == False
-assert goes_after("panorama", "a", "n") == True
-assert goes_after("list", "l", "o") == False
-assert goes_after("", "l", "o") == False
-assert goes_after("list", "l", "l") == False
-assert goes_after("world", "d", "w") == False
-assert goes_after("Almaz", "a", "l") == False
-assert goes_after('transport', 'r', 't') == False
-assert goes_after('almaz', 'm', 'a') == False
+assert list(flat_list([1, 2, 3])) == [1, 2, 3]
+assert list(flat_list([1, [2, 2, 2], 4])) == [1, 2, 2, 2, 4]
+assert list(flat_list([[[2]], [4, [5, 6, [6], 6, 6, 6], 7]])) == [
+    2,
+    4,
+    5,
+    6,
+    6,
+    6,
+    6,
+    6,
+    7,
+]
+assert list(flat_list([-1, [1, [-2], 1], -1])) == [-1, 1, -2, 1, -1]
 
 print("The mission is done! Click 'Check Solution' to earn rewards!")
