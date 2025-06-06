@@ -160,6 +160,7 @@ cython_debug/
 *.json
 *.csv
 tmp.py
+tmp*.py
 
 # more
 .idea
