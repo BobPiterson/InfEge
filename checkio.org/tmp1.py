@@ -1,35 +1,18 @@
-def letter_queue(commands: list[str]) -> str:
-    print('-------------------------------------')
-    print(commands)
-    out = []
-    for i in commands:
-        if 'PUSH' in  i:
-            out.append(i[5:])
-        elif 'POP' in i and len(out) != 0:
-            out.pop(0)
-        else:
-            print('Список пуст!')
-        print(out)
-
-    return ''.join(out)
+def easy_unpack(elements: tuple) -> tuple:
+    a = []
+    a.append(elements[0])
+    a.append(elements[2])
+    tmp = list(elements[::-1])
+    a.append(tmp[1])
+    return tuple(a)
 
 
-print("Example:")
-print(
-    letter_queue(
-        ["PUSH A", "POP", "POP", "PUSH Z", "PUSH D", "PUSH O", "POP", "PUSH T"]
-    )
-)
+#print("Example:")
+#print(easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)))
 
 # These "asserts" are used for self-checking
-assert (
-    letter_queue(
-        ["PUSH A", "POP", "POP", "PUSH Z", "PUSH D", "PUSH O", "POP", "PUSH T"]
-    )
-    == "DOT"
-)
-assert letter_queue(["POP", "POP"]) == ""
-assert letter_queue(["PUSH H", "PUSH I"]) == "HI"
-assert letter_queue([]) == ""
+assert easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)) == (1, 3, 7)
+assert easy_unpack((1, 1, 1, 1)) == (1, 1, 1)
+assert easy_unpack((6, 3, 7)) == (6, 7, 3)
 
 print("The mission is done! Click 'Check Solution' to earn rewards!")
