@@ -30,6 +30,7 @@ def safe_pawns(pawns: set) -> int:
             pawns_list[j][0] == pawns_list[i][0] + 1 and pawns_list[j][1] == pawns_list[i][1] + 1:
                 steps.add(pawns_list[j])
                 print('-------------------------------', len(steps), pawns_list[i], pawns_list[j])
+                
 
     print(len(steps))
     return len(steps)
