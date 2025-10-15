@@ -4,10 +4,9 @@
 # 3.  Если исходное число N было нечётным, в конец записи (справа) дописываются цифры 10, если чётным  — 01.
 # 4.  Результат переводится в десятичную систему и выводится на экран.
 # Какое число нужно ввести в автомат, чтобы в результате получилось 2018?
-resultat = 2018
 
-for decimal_num in range(1, 9999):
-    binary_num = format(decimal_num, 'b')
+for decimal_num in range(1, 2000):
+    binary_num = bin(decimal_num)[2:]
     # получить срез без последней цифры
     shot = binary_num[:-1]
     if decimal_num % 2 != 0:
@@ -15,6 +14,6 @@ for decimal_num in range(1, 9999):
     else:
         shot = shot + '01'
     #print(shot, int(shot, 2))
-    if int(shot, 2) == resultat:
+    if int(shot, 2) == 2018:
         print(decimal_num)
         exit()
