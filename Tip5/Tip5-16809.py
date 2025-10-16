@@ -34,4 +34,5 @@ for N in range(0, 256):
     if tmp == 133:
         print(N, tmp)
         break
+# Ответ = 61
 

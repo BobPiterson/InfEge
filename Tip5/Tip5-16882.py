@@ -30,3 +30,4 @@ for n in range(0, 256):
     d = int(s, 2)
     if d - n == 111:
         print (n)
+# Ответ = 72

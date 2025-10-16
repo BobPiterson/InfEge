@@ -29,4 +29,4 @@ for N in range(1, 15):
     if tmp > 43:
         print(N, '\t', tmp)
         #break
-
+# Ответ = 46

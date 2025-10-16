@@ -17,3 +17,4 @@ for decimal_num in range(1, 2000):
     if int(shot, 2) == 2018:
         print(decimal_num)
         exit()
+# Ответ = 1009

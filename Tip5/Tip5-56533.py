@@ -46,3 +46,4 @@ for i in range(n + 1000, n - 1000, -1):
         break
 
 print(r - l + 1)
+# Ответ = 141975308

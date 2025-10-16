@@ -20,4 +20,4 @@ for n in range(0, 1000):
     if r > 151 and r < r_min:
         r_min = r
         print(n, int(b,2))
-
+# Ответ = 163
