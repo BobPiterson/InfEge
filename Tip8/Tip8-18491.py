@@ -9,16 +9,8 @@ for a in 'ОЛГА':
         for c in alf:
             for d in alf:
                 for e in alf:
-                    s = set()
-                    s.add(a)
-                    s.add(b)
-                    s.add(c)
-                    s.add(d)
-                    s.add(e)
-                    tmp = a+b+c+d+e
-                    if len(s) == 5 and tmp.count('ОЬ') == 0 and tmp.count('АЬ') == 0:
-                        m.append(tmp)
+                    if len({a,b,c,d,e}) == 5 and (a+b+c+d+e).count('ОЬ') == 0 and (a+b+c+d+e).count('АЬ') == 0:
+                        m.append((a+b+c+d+e))
 print(m)
 print('Ответ =', len(m))
 # Ответ = 48
-
