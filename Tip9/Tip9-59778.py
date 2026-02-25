@@ -4,22 +4,17 @@
 # —  среднее значение неповторяющихся чисел больше суммы повторяющихся чисел.
 # В ответе запишите только число.
 count = 0
-file = open(r"D:\Downloads\Задание 9.txt").readlines()
+file = open(r"D:\Downloads\Задание 9 (1).txt").readlines()
 #print(file[0])
 #print(list(map(int, file[0].split())))
 for i in file:
     s = list(map(int, i.split()))
-    if len(set(s)) == 4: # выберем только строки, в которых совпадает ровно 4 числа
-        sum = 0 # сумма неповторяющихся
-        #print(s)
-        for j in s:
-            if s.count(j) != 4:
-                #print('j=',j)
-                sum += j
-            else:
-                #print('v=',j)
-                v = j # повторяющееся число
-        if sum / 3 > v * 4:
-            print(s)
-            count += 1
+
+    for j in s: # перебор чисел в строке
+        if s.count(j) == 4: # если число повторяется 4 раза
+            tmp = j
+            for k in range(4):
+                s.remove(tmp) # удалим из строки все повторяющиеся числа
+    if len(s) == 3 and sum(s) / 3 > tmp * 4: # если были найдены и удалены повторяющиеся числа и выполнено 2-е условие
+        count += 1
 print('Ответ:  ', count) 
