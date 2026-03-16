@@ -9,16 +9,9 @@ for a in 'ОЛГА':
         for c in alf:
             for d in alf:
                 for e in alf:
-                    s = set()
-                    s.add(a)
-                    s.add(b)
-                    s.add(c)
-                    s.add(d)
-                    s.add(e)
-                    tmp = a+b+c+d+e
-                    if len(s) == 5 and tmp.count('ОЬ') == 0 and tmp.count('АЬ') == 0:
-                        m.append(tmp)
+                    kod = a+b+c+d+e
+                    if kod.count('О') == 1 and kod.count('Л') == 1 and kod.count('Ь') == 1 and kod.count('Г') == 1 and kod.count('А') == 1 and kod.count('ОЬ') == 0 and kod.count('АЬ') == 0:
+                        m.append(kod)
 print(m)
 print('Ответ =', len(m))
 # Ответ = 48
-
