@@ -7,14 +7,12 @@ for i in range(100000, 1000000):
     lis = []
     # собирем в набор для проверки уникальности
     for c in str(i):
-        set1.add(int(c))
+        set1.add(c)
         lis.append(int(c))
     # проверим все требуемые условия
     if (i % 5 == 0) and (len(set1) == 6):
-        if (lis[0] + lis[1]) % 2 == 0 or (lis[1] + lis[2]) % 2 == 0 or (lis[2] + lis[3]) % 2 == 0 or (lis[3] + lis[4]) % 2 == 0 or (lis[4] + lis[5]) % 2 == 0:
-            # Если сумма любых соседних цифр четная, пропускаем остаток цикла
-            continue
-        m.append(i)
-print(m)
+        if not(lis[0] % 2 == lis[1] % 2 or lis[1] % 2 == lis[2] % 2 or lis[2] % 2 == lis[3] % 2 or lis[3] % 2 == lis[4] % 2 or lis[4] % 2 == lis[5] % 2):
+            m.append(i)
+#print(m)
 print(len(m))
 # Ответ: 1296
