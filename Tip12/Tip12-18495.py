@@ -7,8 +7,9 @@
 # КОНЕЦ
 #
 s = '1' * 40 + '2' * 40
-while s.find('111') != -1:
+while '111' in s:
     s = s.replace('111', '2', 1)
-    if s.find('222') != -1:
+    if '222' in s:
         s = s.replace('222', '1', 1)
-print (s)
+print ('Ответ:', s)
+# Ответ: 2112 
