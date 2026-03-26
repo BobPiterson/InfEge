@@ -1,6 +1,7 @@
 from string import digits, ascii_uppercase
+alp = digits + ascii_uppercase # Алфавит для всех систем исчисления "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# print(alp)
 
-alp = digits + ascii_uppercase
 
 mn = 1e9
 for x in range(13):
