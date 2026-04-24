@@ -8,8 +8,11 @@
 # в некоторых заданиях нужно учитывать, что при подсчете длины числа считается знак "-"
 # поэтому чтобы правильно определить длину числа, нужно его преобразовать в int,
 # взять модуль, преобразвать в str, и только потом подсчитать длину
-f = open(r"C:\Users\vngorlachev\Downloads\17.txt").read().split()
-#print(f)
+
+f = open(r"C:\Users\vngorlachev\Downloads\37336.txt").read().split()
+# f = open(r"C:\Users\vngorlachev\Downloads\37336.txt").readlines()
+print(f[0:9])
+print(int(f[0]))
 
 maxS = -1e9
 count = 0

@@ -1,4 +1,4 @@
-f = open('C:/Users/vngorlachev/Documents/15.Материалы ЕГЭ/скаченные файлы/inf_26_04_21_24.txt').read().split()
+f = open(r"C:\Users\vngorlachev\Downloads\35998.txt").readlines()
 #print(f[0])
 #print(len(f))
 maxlen = 0
@@ -7,10 +7,8 @@ for s in f:
     # найдем строки, в которых количество символов "А" меньше 25
     if s.count('A') < 25:
         # переберем все символы в найденной строке
-        for c in s:
-            # если разница между номерами последнего и первого вхождения символа больше "maxlen", сохраняем
-            if s.rfind(c) - s.find(c) > maxlen:
-                maxlen = s.rfind(c) - s.find(c)
-print(maxlen)
-
-
+        for h in s:
+            # максимальная разница между номерами последнего и первого вхождения символа:
+            maxlen = max(maxlen, s.rfind(h) - s.find(h))
+print('Ответ:', maxlen)
+# Ответ: 1004
