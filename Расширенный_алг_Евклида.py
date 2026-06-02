@@ -3,35 +3,32 @@ def extended_gcd(a, b):
     Возвращает (gcd, x, y) такие что a*x + b*y = gcd
     Использует итеративный расширенный алгоритм Евклида.
     """
-    old_r = a
-    r = b
-    old_x = 1   # коэффициенты при a
-    x = 0       # коэффициенты при a
-    old_y = 0   # коэффициенты при b
-    y = 1       # коэффициенты при b
 
-    print('old_r,r,old_x,x,old_y,y = ', old_r,r,old_x,x,old_y,y)
-    while r != 0:
+    x2 = 1   # коэффициенты при a
+    x1 = 0       # коэффициенты при a
+    y2 = 0   # коэффициенты при b
+    y1 = 1       # коэффициенты при b
+
+    print('old_r,r,old_x,x,old_y,y = ', a,b,x2,x1,y2,y1)
+    while b != 0:
         print('-----------------------------')
-        quotient = old_r // r
-        print(quotient)
-        tmp = old_r
-        old_r = r
-        r = tmp % r
-        # old_r, r = r, old_r - quotient * r
-        print(old_r, r)
-        tmp = old_x
-        old_x = x
-        x = tmp -  quotient * x
-        #old_x, x = x, old_x - quotient * x
-        print(old_x, x)
-        tmp = old_y
-        old_y = y
-        y = tmp -  quotient * y
-        #old_y, y = y, old_y - quotient * y
-        print(old_y, y)
+        q = a // b
+        print(q)
+        tmp = a
+        a = b
+        b = tmp % b
+        print(b, a)
+        tmp = x2
+        x2 = x1
+        x1 = tmp -  q * x1
+        print(x1, x2)
+        tmp = y2
+        y2 = y1
+        y1 = tmp -  q * y1
+        print(y1, y2)
         print('-----------------------------')
-    return old_r, old_x, old_y
+    print(a, x2, y2)
+    return a, x2, y2
 
 def find_rsa_d(e, phi):
     # Для устойчивости сразу берём e по модулю phi
@@ -46,7 +43,7 @@ def find_rsa_d(e, phi):
     return d
 
 # Исходные данные
-e = 65537
+e = 17
 phi = 360
 
 d = find_rsa_d(e, phi)

@@ -13,7 +13,7 @@ def convert_to7(number):
     return result
 
 # Функция перевода из 10-ной в произвольную систему исчисления до 36-й.
-def convert_to(number, base):
+def convert_to_base(number : int, base):
     digits = '0123456789abcdefghijklmnopqrstuvwxyz'
     # Проверка на ошибочно заданную систему с номером более 36
     if base > len(digits): return None
@@ -23,11 +23,23 @@ def convert_to(number, base):
         number = number // base
     return result
 
+# Функция перевода из 16-ной в 10-ную систему счисления.
+def convert_to_10(number : str, base):
+    digits = '0123456789abcdefghijklmnopqrstuvwxyz'
+    result = 0
+    for i in range(len(number)):
+        result = result + digits.find(number[len(number) - i - 1]) * base**i
+    return result
+
+
 # Исходное число в десятиричной системе:
-a = 1570137287
-print('Исходное число: ', a)
+a = 255
+base = 16
+print('Исходное число в десятичной: ', a)
 # с применением универсальной функции, переведем в 20-ричную систему и обратно:
-print('Получено: ', convert_to(a, 36))
-print('Проверка: ', int(convert_to(a, 36), 36))
+b = convert_to_base(a, base)
+print('Получено в : ',str(base),'-ной:', b)
+print('Проверка: ', convert_to_10(b, base))
+print('Проверка: ', int(b, base))
 # print(convert_to7(a))
 # print(int(convert_to7(a), 7))
